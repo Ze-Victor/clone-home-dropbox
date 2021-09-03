@@ -12,6 +12,10 @@ const Sections: React.FC<Props> = ({ variant, title, description }) => {
 
   const buttonText = Math.round(Math.random());
 
+  function handleToggle() {
+    if (window.toggleActiveMenu) window.toggleActiveMenu();
+  }
+
   return (
     <div>
       <Container className={variant}>
@@ -22,7 +26,7 @@ const Sections: React.FC<Props> = ({ variant, title, description }) => {
               <span>Dropbox</span>
             </h1>
 
-            <button>{buttonText === 0 ? 'Interagir' : 'Acessar'}</button>
+            <button onClick={handleToggle}>{buttonText === 0 ? 'Interagir' : 'Acessar'}</button>
           </Header>
         </HeaderWrapper>
         <Content>

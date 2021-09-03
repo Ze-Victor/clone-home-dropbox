@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-
 import { Container } from './style';
+
+const scrollViewSideMenu = 300;
+
+declare global {
+  interface Window {
+    toggleActiveMenu: (() => void) | undefined;
+  }
+}
 
 const SideMenu: React.FC = ({ children }) => {
 
   const [scrollY, setScrollY] = useState(0)
   const [isActive, setIsActive] = useState(false)
-
-  const scrollViewSideMenu = 300;
 
   useEffect(() => {
 
@@ -28,6 +33,12 @@ const SideMenu: React.FC = ({ children }) => {
   ]
 
   const classesName = classes.join(' ').trim()
+
+  function toggleActiveMenu() {
+    setIsActive(prev => !prev)
+  }
+
+  window.toggleActiveMenu = toggleActiveMenu;
 
   return (
     <Container className={classesName}>
