@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Content } from './style';
+import { Container, HeaderWrapper, Header, DropboxIcon, Content } from './style';
 
 interface Props {
   variant: "blue" | "beige" | "white" | "black";
@@ -9,11 +9,24 @@ interface Props {
 }
 
 const Sections: React.FC<Props> = ({ variant, title, description }) => {
+
+  const buttonText = Math.round(Math.random());
+
   return (
     <div>
-      <Container>
+      <Container className={variant}>
+        <HeaderWrapper>
+          <Header>
+            <h1>
+              <DropboxIcon />
+              <span>Dropbox</span>
+            </h1>
+
+            <button>{buttonText === 0 ? 'Interagir' : 'Acessar'}</button>
+          </Header>
+        </HeaderWrapper>
         <Content>
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           <p>{description}</p>
 
         </Content>
